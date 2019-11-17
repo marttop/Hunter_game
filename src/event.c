@@ -60,8 +60,9 @@ void check_hitbox(sprites_s *s_display, sfRenderWindow *window, state *s_state)
 void analyse_event(sfRenderWindow *window, sfEvent event, state *s_state,
                     sprites_s *s_display)
 {
-    if (event.type == sfEvtClosed)
+    if (event.type == sfEvtClosed) {
         sfRenderWindow_close(window);
+    }
     if (event.type == sfEvtMouseButtonPressed) {
         check_hitbox(s_display, window, s_state);
     }

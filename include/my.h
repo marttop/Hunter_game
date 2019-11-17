@@ -78,6 +78,7 @@ void render_all(sfRenderWindow*, sprites_s*, sfVideoMode, sfIntRect*);
 int render_score_txt(sprites_s*);
 int render_score_int(sprites_s*, state*);
 void load_clocks(sprites_s*);
+void destroy_all(sfRenderWindow *window, sprites_s *s_display);
 int my_strlen(char const *str);
 char *my_revstr(char *str);
 char const *my_put_strnbr(int n);

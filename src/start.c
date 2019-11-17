@@ -7,6 +7,21 @@
 
 #include "../include/my.h"
 
+void destroy_all(sfRenderWindow *window, sprites_s *s_display)
+{
+    sfSprite_destroy(s_display->duck1.duck_sprt);
+    sfSprite_destroy(s_display->background1.background_sprt);
+    sfTexture_destroy(s_display->duck1.duck_txt);
+    sfTexture_destroy(s_display->background1.background_txt);
+    sfFont_destroy(s_display->score1.font_score_int);
+    sfFont_destroy(s_display->score1.font_score_txt);
+    sfText_destroy(s_display->score1.text_score_int);
+    sfText_destroy(s_display->score1.text_score_txt);
+    sfClock_destroy(s_display->duck1.clock_anim);
+    sfClock_destroy(s_display->duck1.clock_pos);
+    sfRenderWindow_destroy(window);
+}
+
 void render_all(sfRenderWindow *window, sprites_s *s_display,
                 sfVideoMode mode, sfIntRect *rect)
 {
@@ -45,6 +60,7 @@ int render_window(sfRenderWindow* window, sfEvent event, sfVideoMode mode)
         load_sprite(window, &s_display, rect);
         permanent_displays(window, &s_state, &s_display, &rect);
     }
+    destroy_all(window, &s_display);
 }
 
 int main(void)
