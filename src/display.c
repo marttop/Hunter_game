@@ -21,4 +21,6 @@ void permanent_displays(sfRenderWindow *window, state *s_state,
         }
         sfRenderWindow_drawSprite(window, s_display->duck1.duck_sprt, NULL);
     }
+    sfRenderWindow_drawText(window, s_display->score1.text_score_txt, NULL);
+    sfRenderWindow_drawText(window, s_display->score1.text_score_int, NULL);
 }

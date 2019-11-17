@@ -11,6 +11,7 @@ SRC	=	src/start.c \
 		src/event.c \
 		src/display.c \
 		src/render.c \
+		utils/my_put_strnbr.c \
 
 CFLAGS	+=	-l csfml-system
 CFLAGS	+=	-l csfml-graphics
