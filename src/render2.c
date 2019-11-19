@@ -42,9 +42,23 @@ int render_your_score(sprites_s *s_display)
     if (!s_display->g_over.your_font)
         return (EXIT_FAILURE);
     s_display->g_over.your_text = sfText_create();
-    sfText_setString(s_display->g_over.your_text, "your final score is :");
+    sfText_setString(s_display->g_over.your_text, "Your final score is :");
     sfText_setFont(s_display->g_over.your_text, s_display->g_over.your_font);
     sfText_setCharacterSize(s_display->g_over.your_text, 50);
     sfText_setPosition(s_display->g_over.your_text, (sfVector2f){600, 500});
+    return (0);
+}
+
+int render_restart(sprites_s *s_display)
+{
+    s_display->g_over.restart_font = sfFont_createFromFile("fonts/font.ttf");
+    if (!s_display->g_over.restart_font)
+        return (EXIT_FAILURE);
+    s_display->g_over.restart_txt = sfText_create();
+    sfText_setString(s_display->g_over.restart_txt,
+    "Left clic to restart, right clic to exit");
+    sfText_setFont(s_display->g_over.restart_txt, s_display->g_over.restart_font);
+    sfText_setCharacterSize(s_display->g_over.restart_txt, 50);
+    sfText_setPosition(s_display->g_over.restart_txt, (sfVector2f){450, 570});
     return (0);
 }

@@ -13,6 +13,10 @@
 #include <SFML/System.h>
 #include <SFML/Window/Export.h>
 #include <SFML/Window/Types.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "time.h"
 
 typedef struct duck {
     sfSprite* duck_sprt;
@@ -40,6 +44,8 @@ typedef struct game_over {
     sfText *over_txt;
     sfFont *your_font;
     sfText *your_text;
+    sfFont *restart_font;
+    sfText *restart_txt;
 } game_over;
 
 typedef struct timer {
@@ -73,29 +79,32 @@ typedef struct sprites {
     game_over g_over;
 } sprites_s;
 
-void manage_mouse_click(sfMouseButtonEvent, sfRenderWindow*);
 void analyse_event(sfRenderWindow*, sfEvent, state*, sprites_s*);
-int render_window(sfRenderWindow*, sfEvent);
-void permanent_displays(sfRenderWindow*, state*, sprites_s*, sfIntRect*);
-void load_sprite(sprites_s*, sfIntRect);
+void manage_mouse_click(sfMouseButtonEvent, sfRenderWindow*);
 void move_rect(sfIntRect *, int, int);
 void move_duck(sprites_s*);
+void render_all(sfRenderWindow*, sprites_s*, sfIntRect*);
+int render_window(sfRenderWindow*, sfEvent);
 int render_duck(sprites_s*, sfIntRect*);
 int render_background(sfRenderWindow*, sprites_s*);
-void render_all(sfRenderWindow*, sprites_s*, sfIntRect*);
 int render_score_txt(sprites_s*);
 int render_score_int(sprites_s*, state*);
 int render_timer_int(sprites_s*);
+int render_game_over(sprites_s*);
+int render_restart(sprites_s*);
+int render_your_score(sprites_s*);
 void load_clocks(sprites_s*);
-void destroy_all(sfRenderWindow*, sprites_s*, state*);
+void load_sprite(sprites_s*, sfIntRect);
+void permanent_displays(sfRenderWindow*, state*, sprites_s*, sfIntRect*);
 void display_timer(sprites_s*, sfRenderWindow*, state*);
 void display_score(sprites_s*, sfRenderWindow*);
 void display_duck(sprites_s*, sfRenderWindow*, sfIntRect*);
 void display_game_over(sprites_s*, sfRenderWindow*);
-int render_your_score(sprites_s*);
+void destroy_all(sfRenderWindow*, sprites_s*, state*);
+void destroy_next(sprites_s*);
 int my_strlen(char *);
 char *my_revstr(char *);
 char *my_put_strnbr(int);
-int render_game_over(sprites_s*);
+void write_score(state*);
 
 #endif

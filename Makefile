@@ -13,6 +13,8 @@ SRC	=	src/start.c \
 		src/render.c \
 		utils/my_put_strnbr.c \
 		src/render2.c \
+		src/score.c \
+		src/destroy.c \
 
 OBJ	=	$(SRC:.c=.o)
 
