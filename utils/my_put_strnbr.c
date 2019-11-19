@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-int my_strlen(char const *str)
+int my_strlen(char *str)
 {
     int i = 0;
 
@@ -32,7 +32,7 @@ char *my_revstr(char *str)
     return (str);
 }
 
-char const *my_put_strnbr(int n)
+char *my_put_strnbr(int n)
 {
     int modulo, a = 10, i = 0;
     char *str = malloc(10);

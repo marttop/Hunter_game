@@ -35,13 +35,20 @@ typedef struct score {
     sfText *text_score_int;
 } score;
 
+typedef struct game_over {
+    sfFont *over_font;
+    sfText *over_txt;
+    sfFont *your_font;
+    sfText *your_text;
+} game_over;
+
 typedef struct timer {
-    sfFont *font_score_txt;
-    sfText *text_score_txt;
-    sfFont *font_score_int;
-    sfText *text_score_int;
+    sfFont *font_timer;
+    sfText *text_timer;
+    int time;
+    char *strtime;
     sfClock *timer_clock;
-    sfTime *timer_time;
+    sfTime timer_time;
     float seconds_timer;
 } timer;
 
@@ -63,24 +70,32 @@ typedef struct sprites {
     background_s background1;
     score score1;
     timer timer1;
+    game_over g_over;
 } sprites_s;
 
-void manage_mouse_click(sfMouseButtonEvent, sfRenderWindow *);
+void manage_mouse_click(sfMouseButtonEvent, sfRenderWindow*);
 void analyse_event(sfRenderWindow*, sfEvent, state*, sprites_s*);
-int render_window(sfRenderWindow*, sfEvent, sfVideoMode);
+int render_window(sfRenderWindow*, sfEvent);
 void permanent_displays(sfRenderWindow*, state*, sprites_s*, sfIntRect*);
-int load_sprite(sfRenderWindow*, sprites_s*, sfIntRect);
+void load_sprite(sprites_s*, sfIntRect);
 void move_rect(sfIntRect *, int, int);
 void move_duck(sprites_s*);
-int render_duck(sprites_s*, sfIntRect*, sfVideoMode);
-int render_background(sfRenderWindow*, sprites_s*, sfVideoMode);
-void render_all(sfRenderWindow*, sprites_s*, sfVideoMode, sfIntRect*);
+int render_duck(sprites_s*, sfIntRect*);
+int render_background(sfRenderWindow*, sprites_s*);
+void render_all(sfRenderWindow*, sprites_s*, sfIntRect*);
 int render_score_txt(sprites_s*);
 int render_score_int(sprites_s*, state*);
+int render_timer_int(sprites_s*);
 void load_clocks(sprites_s*);
-void destroy_all(sfRenderWindow *window, sprites_s *s_display);
-int my_strlen(char const *str);
-char *my_revstr(char *str);
-char const *my_put_strnbr(int n);
+void destroy_all(sfRenderWindow*, sprites_s*, state*);
+void display_timer(sprites_s*, sfRenderWindow*, state*);
+void display_score(sprites_s*, sfRenderWindow*);
+void display_duck(sprites_s*, sfRenderWindow*, sfIntRect*);
+void display_game_over(sprites_s*, sfRenderWindow*);
+int render_your_score(sprites_s*);
+int my_strlen(char *);
+char *my_revstr(char *);
+char *my_put_strnbr(int);
+int render_game_over(sprites_s*);
 
 #endif

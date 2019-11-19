@@ -12,16 +12,20 @@ SRC	=	src/start.c \
 		src/display.c \
 		src/render.c \
 		utils/my_put_strnbr.c \
+		src/render2.c \
 
+OBJ	=	$(SRC:.c=.o)
+
+CFLAGS	+=	-Wall -Wextra
 CFLAGS	+=	-l csfml-system
 CFLAGS	+=	-l csfml-graphics
 CFLAGS	+=	-l csfml-window
-CFLAGS	+=	-I./include
+CFLAGS	+=	-I./include -g3
 
 all	:	$(NAME)
 
-$(NAME)	:	$(SRC)
-		gcc -o $(NAME) $(SRC) $(CFLAGS)
+$(NAME)	:	$(OBJ)
+		gcc -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean	:
 		rm -f $(OBJ)

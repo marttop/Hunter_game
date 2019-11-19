@@ -7,13 +7,6 @@
 
 #include "../include/my.h"
 
-void manage_mouse_click(sfMouseButtonEvent event, sfRenderWindow *window)
-{
-    const sfWindow *w_window = window;
-    sfMouse_getPosition(w_window).x;
-    sfMouse_getPosition(w_window).y;
-}
-
 void move_rect(sfIntRect *rect, int offset, int max_value)
 {
     if (rect->left < max_value - offset) {
@@ -64,6 +57,7 @@ void analyse_event(sfRenderWindow *window, sfEvent event, state *s_state,
         sfRenderWindow_close(window);
     }
     if (event.type == sfEvtMouseButtonPressed) {
-        check_hitbox(s_display, window, s_state);
+        if (s_state->my_state == 1)
+            check_hitbox(s_display, window, s_state);
     }
 }
