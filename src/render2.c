@@ -32,7 +32,7 @@ int render_game_over(sprites_s *s_display)
     sfText_setString(s_display->g_over.over_txt, "GAME\nOVER");
     sfText_setFont(s_display->g_over.over_txt, s_display->g_over.over_font);
     sfText_setCharacterSize(s_display->g_over.over_txt, 100);
-    sfText_setPosition(s_display->g_over.over_txt, (sfVector2f){780, 200});
+    sfText_setPosition(s_display->g_over.over_txt, (sfVector2f){760, 200});
     return (0);
 }
 
@@ -56,9 +56,10 @@ int render_restart(sprites_s *s_display)
         return (EXIT_FAILURE);
     s_display->g_over.restart_txt = sfText_create();
     sfText_setString(s_display->g_over.restart_txt,
-    "Left clic to restart, right clic to exit");
-    sfText_setFont(s_display->g_over.restart_txt, s_display->g_over.restart_font);
+    "R to restart, ESC to close");
+    sfText_setFont(s_display->g_over.restart_txt,
+    s_display->g_over.restart_font);
     sfText_setCharacterSize(s_display->g_over.restart_txt, 50);
-    sfText_setPosition(s_display->g_over.restart_txt, (sfVector2f){450, 570});
+    sfText_setPosition(s_display->g_over.restart_txt, (sfVector2f){550, 570});
     return (0);
 }

@@ -39,16 +39,20 @@ int render_score_int(sprites_s *s_display, state *s_state)
     return (0);
 }
 
-int render_duck(sprites_s *s_display, sfIntRect *rect)
+int render_duck(sprites_s *s_display)
 {
     s_display->duck1.clock_anim = sfClock_create();
     s_display->duck1.clock_pos = sfClock_create();
-    rect->left = 0, rect->top = 0, rect->width = 110, rect->height = 110;
+    s_display->duck1.rect_duck.left = 0, s_display->duck1.rect_duck.top = 0;
+    s_display->duck1.rect_duck.width = 110;
+    s_display->duck1.rect_duck.height = 110;
     s_display->duck1.duck_txt =
     sfTexture_createFromFile("sprites/duck.png", NULL);
     if (!s_display->duck1.duck_txt)
         return (EXIT_FAILURE);
     s_display->duck1.duck_sprt = sfSprite_create();
+    sfSprite_setTexture(s_display->duck1.duck_sprt,
+    s_display->duck1.duck_txt, sfTrue);
     return (0);
 }
 
@@ -63,20 +67,4 @@ int render_background(sfRenderWindow *window, sprites_s *s_display)
     sfSprite_setTexture(s_display->background1.background_sprt,
     s_display->background1.background_txt, sfTrue);
     return (0);
-}
-
-void load_clocks(sprites_s *s_display)
-{
-    s_display->duck1.time_anim =
-    sfClock_getElapsedTime(s_display->duck1.clock_anim);
-    s_display->duck1.time_pos =
-    sfClock_getElapsedTime(s_display->duck1.clock_pos);
-    s_display->timer1.timer_time =
-    sfClock_getElapsedTime(s_display->timer1.timer_clock);
-    s_display->duck1.seconds_anim =
-    s_display->duck1.time_anim.microseconds / 1000000.0;
-    s_display->duck1.seconds_pos =
-    s_display->duck1.time_pos.microseconds / 1000000.0;
-    s_display->timer1.seconds_timer =
-    s_display->timer1.timer_time.microseconds / 1000000.0;
 }

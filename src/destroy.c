@@ -27,12 +27,20 @@ void destroy_all(sfRenderWindow *window, sprites_s *s_display, state *s_state)
     sfClock_destroy(s_display->duck1.clock_anim);
     sfClock_destroy(s_display->duck1.clock_pos);
     sfClock_destroy(s_display->timer1.timer_clock);
-    sfRenderWindow_destroy(window);
     destroy_next(s_display);
+    sfRenderWindow_destroy(window);
 }
 
 void destroy_next(sprites_s *s_display)
 {
     sfText_destroy(s_display->g_over.restart_txt);
+    sfText_destroy(s_display->menu1.title_txt);
+    sfText_destroy(s_display->menu1.best_txt);
+    sfText_destroy(s_display->menu1.best_txt_int);
+    sfText_destroy(s_display->menu1.start_txt);
     sfFont_destroy(s_display->g_over.restart_font);
+    sfFont_destroy(s_display->menu1.title_font);
+    sfFont_destroy(s_display->menu1.best_font);
+    sfFont_destroy(s_display->menu1.best_font_int);
+    sfFont_destroy(s_display->menu1.start_font);
 }
