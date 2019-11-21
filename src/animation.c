@@ -36,3 +36,14 @@ void move_duck(sprites_s *s_display)
     }
     sfClock_restart(s_display->duck1.clock_pos);
 }
+
+void move_dog(sprites_s *s_display)
+{
+    if (s_display->dog1.posx < 1120) {
+        s_display->dog1.posx += 1;
+    }
+    else {
+        s_display->dog1.posx = 650;
+    }
+    sfClock_restart(s_display->dog1.clock_pos);
+}

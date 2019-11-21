@@ -63,3 +63,16 @@ int render_restart(sprites_s *s_display)
     sfText_setPosition(s_display->g_over.restart_txt, (sfVector2f){550, 570});
     return (0);
 }
+
+int render_dead(sprites_s *s_display)
+{
+    s_display->dead1.clock_pos = sfClock_create();
+    s_display->dead1.dead_txt =
+    sfTexture_createFromFile("sprites/Die.png", NULL);
+    if (!s_display->duck1.duck_txt)
+        return (EXIT_FAILURE);
+    s_display->dead1.dead_sprt = sfSprite_create();
+    sfSprite_setTexture(s_display->dead1.dead_sprt,
+    s_display->dead1.dead_txt, sfTrue);
+    return (0);
+}

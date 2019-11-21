@@ -76,5 +76,7 @@ int render_dog(sprites_s *s_display)
     s_display->dog1.dog_sprt = sfSprite_create();
     sfSprite_setTexture(s_display->dog1.dog_sprt,
     s_display->dog1.dog_txt, sfTrue);
+    s_display->dog1.posx = 650, s_display->dog1.posy = 830;
+    sfSprite_setPosition(s_display->dog1.dog_sprt, (sfVector2f){650, 830});
     return (0);
 }

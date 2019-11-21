@@ -43,4 +43,11 @@ void destroy_next(sprites_s *s_display)
     sfFont_destroy(s_display->menu1.best_font);
     sfFont_destroy(s_display->menu1.best_font_int);
     sfFont_destroy(s_display->menu1.start_font);
+    sfSprite_destroy(s_display->dog1.dog_sprt);
+    sfSprite_destroy(s_display->dead1.dead_sprt);
+    sfTexture_destroy(s_display->dog1.dog_txt);
+    sfTexture_destroy(s_display->dead1.dead_txt);
+    sfClock_destroy(s_display->dog1.clock_pos);
+    sfClock_destroy(s_display->dog1.clock_anim);
+    sfClock_destroy(s_display->dead1.clock_pos);
 }

@@ -14,7 +14,7 @@ void permanent_displays(sfRenderWindow *window, state *s_state,
     if (s_state->my_state == 1) {
         sfRenderWindow_drawSprite(window,
         s_display->background1.background_sprt, NULL);
-        display_duck(s_display, window);
+        display_duck(s_display, window, s_state);
         display_score(s_display, window);
         display_timer(s_display, window, s_state);
     }
@@ -47,7 +47,7 @@ void display_score(sprites_s *s_display, sfRenderWindow *window)
     sfRenderWindow_drawText(window, s_display->score1.text_score_int, NULL);
 }
 
-void display_duck(sprites_s *s_display, sfRenderWindow *window)
+void display_duck(sprites_s *s_display, sfRenderWindow *window, state *s_state)
 {
     sfSprite_setPosition(s_display->duck1.duck_sprt,
     (sfVector2f){s_display->duck1.posx, s_display->duck1.posy});
@@ -58,6 +58,7 @@ void display_duck(sprites_s *s_display, sfRenderWindow *window)
         sfClock_restart(s_display->duck1.clock_anim);
     }
     sfRenderWindow_drawSprite(window, s_display->duck1.duck_sprt, NULL);
+    display_dead(window, s_state, s_display);
 }
 
 void display_game_over(sprites_s *s_display, sfRenderWindow *window)

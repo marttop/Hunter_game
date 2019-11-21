@@ -28,6 +28,14 @@ void load_next_clocks(sprites_s *s_display)
 {
     s_display->dog1.time_anim =
     sfClock_getElapsedTime(s_display->dog1.clock_anim);
+    s_display->dog1.time_pos =
+    sfClock_getElapsedTime(s_display->dog1.clock_pos);
+    s_display->dead1.time_pos =
+    sfClock_getElapsedTime(s_display->dead1.clock_pos);
     s_display->dog1.seconds_anim =
     s_display->dog1.time_anim.microseconds / 1000000.0;
+    s_display->dog1.seconds_pos =
+    s_display->dog1.time_pos.microseconds / 1000000.0;
+    s_display->dead1.seconds_pos =
+    s_display->dead1.time_pos.microseconds / 1000000.0;
 }

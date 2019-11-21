@@ -21,11 +21,13 @@ void render_all(sfRenderWindow *window, sprites_s *s_display)
     render_best_int(s_display);
     render_start(s_display);
     render_dog(s_display);
+    render_dead(s_display);
 }
 
 void load_sprite_animation(sprites_s *s_display)
 {
     load_clocks(s_display);
+    move_dog(s_display);
     move_duck(s_display);
 }
 

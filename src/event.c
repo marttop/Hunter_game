@@ -7,6 +7,14 @@
 
 #include "../include/my.h"
 
+void draw_dead(sprites_s *s_display, state *s_state)
+{
+    sfClock_restart(s_display->dead1.clock_pos);
+    sfSprite_setPosition(s_display->dead1.dead_sprt,
+    (sfVector2f){s_display->duck1.posx, s_display->duck1.posy});
+    s_state->dead = 1;
+}
+
 void check_hitbox(sprites_s *s_display, sfRenderWindow *window, state *s_state)
 {
     s_state->mouse_posx = sfMouse_getPositionRenderWindow(window).x;
@@ -19,6 +27,7 @@ void check_hitbox(sprites_s *s_display, sfRenderWindow *window, state *s_state)
             free(s_state->str_score);
         s_state->score += 1;
         s_state->str_score = my_put_strnbr(s_state->score);
+        draw_dead(s_display, s_state);
         s_display->duck1.posx = 0;
         s_display->duck1.posy = rand() % 800;
         s_display->duck1.speed += 140;

@@ -33,6 +33,29 @@ typedef struct duck {
     int speed;
 } duck_s;
 
+typedef struct dead {
+    sfSprite* dead_sprt;
+    sfTexture* dead_txt;
+    sfClock *clock_pos;
+    sfTime time_pos;
+    float seconds_pos;
+} dead;
+
+typedef struct falling {
+    sfIntRect rect_duck;
+    sfSprite* duck_sprt;
+    sfTexture* duck_txt;
+    sfClock *clock_anim;
+    sfClock *clock_pos;
+    sfTime time_anim;
+    sfTime time_pos;
+    float posx;
+    float posy;
+    float seconds_anim;
+    float seconds_pos;
+    int speed;
+} falling;
+
 typedef struct dog {
     sfIntRect rect_dog;
     sfSprite *dog_sprt;
@@ -92,6 +115,7 @@ typedef struct background {
 } background_s;
 
 typedef struct state {
+    int dead;
     int my_state;
     float mouse_posx;
     float mouse_posy;
@@ -107,6 +131,7 @@ typedef struct sprites {
     timer timer1;
     game_over g_over;
     menu menu1;
+    dead dead1;
 } sprites_s;
 
 void analyse_event(sfRenderWindow*, sfEvent, state*, sprites_s*);
@@ -115,6 +140,7 @@ void restart(state*, sprites_s*);
 void move_rect_duck(sprites_s*, int, int);
 void move_rect_dog(sprites_s*, int, int);
 void move_duck(sprites_s*);
+void move_dog(sprites_s*);
 void render_all(sfRenderWindow*, sprites_s*);
 int render_window(sfRenderWindow*, sfEvent);
 int render_duck(sprites_s*);
@@ -130,16 +156,19 @@ int render_title(sprites_s*);
 int render_best_txt(sprites_s*);
 int render_best_int(sprites_s*);
 int render_start(sprites_s*);
+int render_dead(sprites_s*);
+void draw_dead(sprites_s*, state*);
 void load_clocks(sprites_s*);
 void load_next_clocks(sprites_s*);
 void load_sprite_animation(sprites_s*);
 void permanent_displays(sfRenderWindow*, state*, sprites_s*);
 void display_timer(sprites_s*, sfRenderWindow*, state*);
 void display_score(sprites_s*, sfRenderWindow*);
-void display_duck(sprites_s*, sfRenderWindow*);
+void display_duck(sprites_s*, sfRenderWindow*, state*);
 void display_game_over(sprites_s*, sfRenderWindow*);
 void display_menu(sfRenderWindow*, sprites_s*);
 void display_dog(sprites_s*, sfRenderWindow*);
+void display_dead(sfRenderWindow*, state*, sprites_s*);
 void destroy_all(sfRenderWindow*, sprites_s*, state*);
 void destroy_next(sprites_s*);
 int my_strlen(char *);
