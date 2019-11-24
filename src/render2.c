@@ -9,17 +9,16 @@
 
 int render_timer_int(sprites_s *s_display)
 {
-    s_display->timer1.timer_clock = sfClock_create();
-    s_display->timer1.time = 15;
-    s_display->timer1.font_timer = sfFont_createFromFile("fonts/font.ttf");
-    if (!s_display->timer1.font_timer)
+    s_display->lives1.lives = 5;
+    s_display->lives1.font_lives = sfFont_createFromFile("fonts/font.ttf");
+    if (!s_display->lives1.font_lives)
         return (EXIT_FAILURE);
-    s_display->timer1.strtime = my_put_strnbr(s_display->timer1.time);
-    s_display->timer1.text_timer = sfText_create();
-    sfText_setString(s_display->timer1.text_timer, s_display->timer1.strtime);
-    sfText_setFont(s_display->timer1.text_timer, s_display->timer1.font_timer);
-    sfText_setCharacterSize(s_display->timer1.text_timer, 50);
-    sfText_setPosition(s_display->timer1.text_timer, (sfVector2f){935, 5});
+    s_display->lives1.strlives = my_put_strnbr(s_display->lives1.lives);
+    s_display->lives1.text_lives = sfText_create();
+    sfText_setString(s_display->lives1.text_lives, s_display->lives1.strlives);
+    sfText_setFont(s_display->lives1.text_lives, s_display->lives1.font_lives);
+    sfText_setCharacterSize(s_display->lives1.text_lives, 50);
+    sfText_setPosition(s_display->lives1.text_lives, (sfVector2f){935, 5});
     return (0);
 }
 

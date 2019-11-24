@@ -15,6 +15,7 @@ void permanent_displays(sfRenderWindow *window, state *s_state,
         sfRenderWindow_drawSprite(window,
         s_display->background1.background_sprt, NULL);
         display_duck(s_display, window, s_state);
+        display_side(s_display, window, s_state);
         display_score(s_display, window);
         display_timer(s_display, window, s_state);
     }
@@ -28,17 +29,10 @@ void permanent_displays(sfRenderWindow *window, state *s_state,
 void display_timer(sprites_s *s_display, sfRenderWindow *window,
                     state *s_state)
 {
-    if (s_display->timer1.seconds_timer > 1.0) {
-        if (s_display->timer1.strtime != NULL)
-            free(s_display->timer1.strtime);
-        s_display->timer1.time -= 1;
-        s_display->timer1.strtime = my_put_strnbr(s_display->timer1.time);
-        sfClock_restart(s_display->timer1.timer_clock);
-    }
-    if (s_display->timer1.time < 0)
+    if (s_display->lives1.lives < 0)
         s_state->my_state = 0;
-    sfText_setString(s_display->timer1.text_timer, s_display->timer1.strtime);
-    sfRenderWindow_drawText(window, s_display->timer1.text_timer, NULL);
+    sfText_setString(s_display->lives1.text_lives, s_display->lives1.strlives);
+    sfRenderWindow_drawText(window, s_display->lives1.text_lives, NULL);
 }
 
 void display_score(sprites_s *s_display, sfRenderWindow *window)

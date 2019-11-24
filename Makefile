@@ -20,7 +20,9 @@ SRC	=	src/start.c \
 		src/animation.c \
 		src/clocks.c \
 		src/display2.c \
-
+		src/falling.c \
+		src/side_duck.c \
+		src/restart.c \
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -15,6 +15,14 @@ void draw_dead(sprites_s *s_display, state *s_state)
     s_state->dead = 1;
 }
 
+void draw_dead_side(sprites_s *s_display, state *s_state)
+{
+    sfClock_restart(s_display->dead1.clock_pos);
+    sfSprite_setPosition(s_display->dead1.dead_sprt,
+    (sfVector2f){s_display->side1.posx, s_display->side1.posy});
+    s_state->dead = 1;
+}
+
 void check_hitbox(sprites_s *s_display, sfRenderWindow *window, state *s_state)
 {
     s_state->mouse_posx = sfMouse_getPositionRenderWindow(window).x;
@@ -30,7 +38,7 @@ void check_hitbox(sprites_s *s_display, sfRenderWindow *window, state *s_state)
         draw_dead(s_display, s_state);
         s_display->duck1.posx = 0;
         s_display->duck1.posy = rand() % 800;
-        s_display->duck1.speed += 140;
+        s_display->duck1.speed += 35;
         sfText_setString(s_display->score1.text_score_int, s_state->str_score);
         sfText_setFont(s_display->score1.text_score_int,
         s_display->score1.font_score_int);
@@ -44,8 +52,10 @@ void analyse_event(sfRenderWindow *window, sfEvent event, state *s_state,
         sfRenderWindow_close(window);
     }
     if (s_state->my_state == 1) {
-        if (event.type == sfEvtMouseButtonPressed)
+        if (event.type == sfEvtMouseButtonPressed) {
             check_hitbox(s_display, window, s_state);
+            check_hitbox_side(s_display, window, s_state);
+        }
     }
     if (s_state->my_state == 0) {
         if (sfKeyboard_isKeyPressed(sfKeyEscape))
@@ -57,21 +67,4 @@ void analyse_event(sfRenderWindow *window, sfEvent event, state *s_state,
         if (sfKeyboard_isKeyPressed(sfKeySpace))
             restart(s_state, s_display);
     }
-}
-
-void restart(state *s_state, sprites_s *s_display)
-{
-    write_score(s_state);
-    s_state->score = 0;
-    sfText_setString(s_display->score1.text_score_int, "0");
-    s_display->duck1.posx = 0;
-    s_display->duck1.posy = 0;
-    s_display->duck1.speed = 500;
-    sfText_setPosition(s_display->score1.text_score_int,
-    (sfVector2f){1800, 5});
-    sfClock_restart(s_display->duck1.clock_anim);
-    sfClock_restart(s_display->duck1.clock_pos);
-    sfClock_restart(s_display->timer1.timer_clock);
-    s_display->timer1.time = 15;
-    s_state->my_state = 1;
 }

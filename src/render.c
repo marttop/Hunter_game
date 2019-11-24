@@ -48,6 +48,8 @@ int render_duck(sprites_s *s_display)
     s_display->duck1.rect_duck.height = 110;
     s_display->duck1.duck_txt =
     sfTexture_createFromFile("sprites/duck.png", NULL);
+    s_display->duck1.speed = 0;
+    s_display->duck1.posx = 0, s_display->duck1.posy = rand() % 700;
     if (!s_display->duck1.duck_txt)
         return (EXIT_FAILURE);
     s_display->duck1.duck_sprt = sfSprite_create();
@@ -66,5 +68,26 @@ int render_background(sfRenderWindow *window, sprites_s *s_display)
     s_display->background1.background_sprt = sfSprite_create();
     sfSprite_setTexture(s_display->background1.background_sprt,
     s_display->background1.background_txt, sfTrue);
+    return (0);
+}
+
+int render_falling(sprites_s *s_display)
+{
+    s_display->falling1.clock_anim = sfClock_create();
+    s_display->falling1.clock_pos = sfClock_create();
+    s_display->falling1.rect_duck.left = 0;
+    s_display->falling1.rect_duck.top = 0;
+    s_display->falling1.rect_duck.width = 110;
+    s_display->falling1.rect_duck.height = 110;
+    s_display->falling1.duck_txt =
+    sfTexture_createFromFile("sprites/Falling.png", NULL);
+    if (!s_display->falling1.duck_txt)
+        return (EXIT_FAILURE);
+    s_display->falling1.duck_sprt = sfSprite_create();
+    sfSprite_setTexture(s_display->falling1.duck_sprt,
+    s_display->falling1.duck_txt, sfTrue);
+    s_display->falling1.posx = 0, s_display->falling1.posy = rand() % 1700;
+    sfSprite_setPosition(s_display->falling1.duck_sprt,
+    (sfVector2f){s_display->falling1.posx, s_display->falling1.posy});
     return (0);
 }

@@ -14,7 +14,7 @@ void display_menu(sfRenderWindow *window, sprites_s *s_display)
     sfRenderWindow_drawText(window, s_display->menu1.best_txt_int, NULL);
     sfRenderWindow_drawText(window, s_display->menu1.start_txt, NULL);
     display_dog(s_display, window);
-    
+    display_falling(s_display, window);
 }
 
 void display_dog(sprites_s *s_display, sfRenderWindow *window)
