@@ -12,6 +12,7 @@ int message(void)
     write(1, "Welcome to the hunter game !\n\n", 30);
     write(1, "You can shoot the ducks with any mouse button click.\n", 53);
     write(1, "Your only have 5 lives.\n", 24);
+    write(1, "Your lives are displayed on the top.\n", 37);
     write(1, "Ducks will come from left and bottom positions.\n", 48);
     write(1,
     "Your score will be saved at the end and displayed in the menu !\n\n", 65);
