@@ -37,8 +37,9 @@ void check_hitbox(sprites_s *s_display, sfRenderWindow *window, state *s_state)
         s_state->str_score = my_put_strnbr(s_state->score);
         draw_dead(s_display, s_state);
         s_display->duck1.posx = 0;
-        s_display->duck1.posy = rand() % 800;
-        s_display->duck1.speed += 35;
+        sfMusic_stop(s_display->sounds1.hit);
+        sfMusic_play(s_display->sounds1.hit);
+        s_display->duck1.posy = rand() % 800, s_display->duck1.speed += 35;
         sfText_setString(s_display->score1.text_score_int, s_state->str_score);
         sfText_setFont(s_display->score1.text_score_int,
         s_display->score1.font_score_int);

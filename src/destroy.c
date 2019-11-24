@@ -60,6 +60,9 @@ void destroy_second(sprites_s *s_display)
     sfClock_destroy(s_display->side1.clock_pos);
     sfTexture_destroy(s_display->falling1.duck_txt);
     sfTexture_destroy(s_display->side1.duck_txt);
+    sfTexture_destroy(s_display->cross1.cross_txt);
     sfSprite_destroy(s_display->falling1.duck_sprt);
     sfSprite_destroy(s_display->side1.duck_sprt);
+    sfSprite_destroy(s_display->cross1.cross_sprt);
+    sfMusic_destroy(s_display->sounds1.hit);
 }

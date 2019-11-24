@@ -29,6 +29,7 @@ void render_all(sfRenderWindow *window, sprites_s *s_display)
     render_start(s_display), render_dog(s_display);
     render_dead(s_display), render_falling(s_display);
     render_side_duck(s_display), render_duck(s_display);
+    render_sound(s_display), render_crosshair(s_display);
 }
 
 void load_sprite_animation(sprites_s *s_display)

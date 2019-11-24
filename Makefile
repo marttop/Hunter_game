@@ -23,12 +23,15 @@ SRC	=	src/start.c \
 		src/falling.c \
 		src/side_duck.c \
 		src/restart.c \
+		src/sounds.c \
+		src/crosshair.c \
 
 OBJ	=	$(SRC:.c=.o)
 
 CFLAGS	+=	-Wall -Wextra
 CFLAGS	+=	-l csfml-system
 CFLAGS	+=	-l csfml-graphics
+CFLAGS	+=	-l csfml-audio
 CFLAGS	+=	-l csfml-window
 CFLAGS	+=	-I./include -g3
 

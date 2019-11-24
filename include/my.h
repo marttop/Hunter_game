@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <SFML/Graphics.h>
+#include <SFML/Audio.h>
 #include <SFML/System.h>
 #include <SFML/Window/Export.h>
 #include <SFML/Window/Types.h>
@@ -17,6 +18,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "time.h"
+
+typedef struct sounds {
+    sfMusic *hit;
+} sounds;
 
 typedef struct duck {
     sfIntRect rect_duck;
@@ -70,6 +75,11 @@ typedef struct side {
     float seconds_pos;
     int speed;
 } side;
+
+typedef struct cross {
+    sfTexture *cross_txt;
+    sfSprite *cross_sprt;
+} cross;
 
 typedef struct dog {
     sfIntRect rect_dog;
@@ -146,6 +156,8 @@ typedef struct sprites {
     dead dead1;
     falling falling1;
     side side1;
+    sounds sounds1;
+    cross cross1;
 } sprites_s;
 
 void analyse_event(sfRenderWindow*, sfEvent, state*, sprites_s*);
@@ -180,6 +192,8 @@ int render_start(sprites_s*);
 int render_dead(sprites_s*);
 int render_falling(sprites_s*);
 int render_side_duck(sprites_s*);
+int render_sound(sprites_s*);
+int render_crosshair(sprites_s*);
 void draw_dead(sprites_s*, state*);
 void draw_dead_side(sprites_s*, state*);
 void load_clocks(sprites_s*);
@@ -198,6 +212,7 @@ void display_dead(sfRenderWindow*, state*, sprites_s*);
 void display_dead_side(sfRenderWindow*, state*, sprites_s*);
 void display_falling(sprites_s*, sfRenderWindow*);
 void display_side(sprites_s*, sfRenderWindow*, state*);
+void display_crosshair(sprites_s*, sfRenderWindow*, state*);
 void destroy_all(sfRenderWindow*, sprites_s*, state*);
 void destroy_next(sprites_s*);
 void destroy_second(sprites_s*);

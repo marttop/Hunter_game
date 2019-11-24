@@ -84,8 +84,9 @@ void check_hitbox_side(sprites_s *s_display, sfRenderWindow *window,
         s_state->str_score = my_put_strnbr(s_state->score);
         draw_dead_side(s_display, s_state);
         s_display->side1.posx = rand() % 1000;
-        s_display->side1.posy = 1080;
-        s_display->side1.speed += 35;
+        s_display->side1.posy = 1080, s_display->side1.speed += 35;
+        sfMusic_stop(s_display->sounds1.hit);
+        sfMusic_play(s_display->sounds1.hit);
         sfText_setString(s_display->score1.text_score_int, s_state->str_score);
         sfText_setFont(s_display->score1.text_score_int,
         s_display->score1.font_score_int);
