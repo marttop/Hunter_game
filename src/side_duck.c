@@ -49,7 +49,7 @@ void move_side_duck(sprites_s *s_display)
     else {
         s_display->side1.posx = rand() % 1000;
         s_display->side1.posy = 1080;
-            s_display->lives1.lives -= 1;
+        s_display->lives1.lives -= 1;
         s_display->lives1.strlives = my_put_strnbr(s_display->lives1.lives);
     }
     sfClock_restart(s_display->side1.clock_pos);

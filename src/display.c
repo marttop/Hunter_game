@@ -17,7 +17,7 @@ void permanent_displays(sfRenderWindow *window, state *s_state,
         display_duck(s_display, window, s_state);
         display_side(s_display, window, s_state);
         display_score(s_display, window);
-        display_timer(s_display, window, s_state);
+        display_lives(s_display, window, s_state);
     }
     else if (s_state->my_state == 0)
         display_game_over(s_display, window);
@@ -26,7 +26,7 @@ void permanent_displays(sfRenderWindow *window, state *s_state,
     sfRenderWindow_display(window);
 }
 
-void display_timer(sprites_s *s_display, sfRenderWindow *window,
+void display_lives(sprites_s *s_display, sfRenderWindow *window,
                     state *s_state)
 {
     if (s_display->lives1.lives < 0)

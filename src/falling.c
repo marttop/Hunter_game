@@ -18,10 +18,10 @@ void move_rect_falling(sprites_s *s_display, int offset, int max_value)
 
 void move_falling(sprites_s *s_display)
 {
-    if (s_display->falling1.posy < 1080)
+    if (s_display->falling1.posy < 1100)
         s_display->falling1.posy += 800 * s_display->falling1.seconds_pos;
     else {
-        s_display->falling1.posy = 0;
+        s_display->falling1.posy = -110;
         s_display->falling1.posx = rand() % 1700;
     }
     sfClock_restart(s_display->falling1.clock_pos);

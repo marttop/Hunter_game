@@ -188,7 +188,7 @@ void load_second_clocks(sprites_s *);
 void load_third_clocks(sprites_s*);
 void load_sprite_animation(sprites_s*);
 void permanent_displays(sfRenderWindow*, state*, sprites_s*);
-void display_timer(sprites_s*, sfRenderWindow*, state*);
+void display_lives(sprites_s*, sfRenderWindow*, state*);
 void display_score(sprites_s*, sfRenderWindow*);
 void display_duck(sprites_s*, sfRenderWindow*, state*);
 void display_game_over(sprites_s*, sfRenderWindow*);
