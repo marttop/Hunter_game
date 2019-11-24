@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-int message()
+int message(void)
 {
     write(1, "Welcome to the hunter game !\n\n", 30);
     write(1, "You can shoot the ducks with any mouse button click.\n", 53);

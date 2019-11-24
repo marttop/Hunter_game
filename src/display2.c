@@ -17,7 +17,8 @@ void display_dead(sfRenderWindow *window, state *s_state, sprites_s *s_display)
     }
 }
 
-void display_dead_side(sfRenderWindow *window, state *s_state, sprites_s *s_display)
+void display_dead_side(sfRenderWindow *window, state *s_state,
+                        sprites_s *s_display)
 {
     if (s_display->dead1.seconds_pos > 0.1) {
         s_state->dead = 0;

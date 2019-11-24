@@ -45,7 +45,7 @@ int render_best_int(sprites_s *s_display)
     s_display->menu1.best_font_int);
     sfText_setCharacterSize(s_display->menu1.best_txt_int, 150);
     sfText_setPosition(s_display->menu1.best_txt_int, (sfVector2f){900, 300});
-    free(s_display->menu1.strbest);    
+    free(s_display->menu1.strbest);
     return (0);
 }
 
