@@ -17,7 +17,7 @@ int message(void)
     write(1,
     "Your score will be saved at the end and displayed in the menu !\n\n", 65);
     write(1, "Good luck try your best and have fun !\n", 39);
-    exit(EXIT_SUCCESS);
+    return (EXIT_SUCCESS);
 }
 
 void render_all(sfRenderWindow *window, sprites_s *s_display)
@@ -77,7 +77,7 @@ int main(int ac, char **av)
         message();
     else {
         write(2, "WRONG ARG", 9);
-        exit(84);
+        return (84);
     }
     return (EXIT_SUCCESS);
 }
